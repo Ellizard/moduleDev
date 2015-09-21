@@ -1,0 +1,4 @@
+name = Magic menu
+description = Magic demo menu
+core = 7.x
+package = moduleDev

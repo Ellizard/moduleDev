@@ -1,3 +1,4 @@
 name = Demo
-description = Demo module
+description = Demo module at - https://drupalize.me/videos/anatomy-drupal-module?p=1145
 core = 7.x
+package = moduleDev
