@@ -4,5 +4,42 @@
  * implements hook_menu().
  */
 function magic_menu_menu() {
-  
+  $items = array();
+
+  $items['magic'] = array(
+      'title' => 'A little magic',
+      'page callback' => 'menu_magic_basic',
+      'access callback' => 'user_access', //user access('access content')
+      'access arguments' => array('access content'),
+  );
+
+  $items['magic/%'] = array(
+      'title' => 'Even more magical',
+      'page callback' => 'menu_magic_extra',
+      'page arguments' => array(1),
+      'access arguments' => array('access content'),
+      'file' => 'menu_magic.extra.inc',
+  );
+
+  $items['user/%/magic'] = array(
+      'title' => 'Magic',
+      'description' => 'Magical magic for users',
+      'page callback' => 'menu_magic_user_tab',
+      'page arguments' => array(1),
+      'access callback' => array('user_access'),
+      'access arguments' => array('administer users'),
+      'file' => 'menu_magic.user.inc',
+      'type' => MENU_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+function menu_magic_basic() {
+    $content = array();
+    $content['raw_markup'] = array(
+        '#type' => 'markup',
+        '#markup' => '<p>' . t('This is magical').'</p>',
+    );
+    return $content;
 }
