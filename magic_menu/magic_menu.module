@@ -32,6 +32,17 @@ function magic_menu_menu() {
       'type' => MENU_LOCAL_TASK,
   );
 
+  $items['node/%/magic'] = array(
+    'title' => 'Magic',
+      'description' => 'Do amazing magical things',
+      'page callback' => 'menu_magic_node_context',
+      'page arguments' => array(1),
+      'access arguments' => array('access content'),
+      'file' => 'menu_magic.context.inc',
+      'type' => MENU_LOCAL_TASK,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+  );
+
   return $items;
 }
 
