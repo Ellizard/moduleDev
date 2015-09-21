@@ -38,7 +38,7 @@ function magic_menu_menu() {
       'page callback' => 'menu_magic_node_context',
       'page arguments' => array(1),
       'access arguments' => array('access content'),
-      'file' => 'menu_magic.context.inc',
+      'file' => 'magic_menu.context.inc',
       'type' => MENU_LOCAL_TASK,
       'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
   );
@@ -52,5 +52,35 @@ function menu_magic_basic() {
         '#type' => 'markup',
         '#markup' => '<p>' . t('This is magical').'</p>',
     );
+
+    $variables = array(
+        'path' => 'http://fakeimg.pl/450x500/',
+        'alt' => t('alt for image'),
+        'title' => t('This is title'),
+    );
+
+    $content['themed_data'] = array(
+        '#type' => 'markup',
+        '#markup' => theme('image', $variables),
+        '#prefix' => '<div class="menu-magic-image">',
+        '#suffix' => '</div>',
+        '#attached' => array(
+          'css' => array(
+            drupal_get_path('module', 'magic_menu') . '/magic_menu.css',
+          ),
+        ),
+    );
+
+    $content['renderable_element'] = array(
+        '#theme' => 'item_list',
+        '#type' => 'ol',
+        '#title' => t('How do we know it\'s magic'),
+        '#items' => array(
+          t('lorem ipsum'),
+          t('dolor'),
+          t('sit amet'),
+        ),
+    );
+
     return $content;
 }
