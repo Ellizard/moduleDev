@@ -84,3 +84,7 @@ function menu_magic_basic() {
 
     return $content;
 }
+
+/**
+ * last https://drupalize.me/videos/altering-page-array?p=1145
+ */
